@@ -66,11 +66,10 @@ service.getEmployeeById = function(id){
 };
 
 service.updateEmployee = function(employee){
-  const sql = 'UPDATE employee set name=$1, email=$2, address=$3, "dateOfBirth"=$4 ,"dateOfJoining"=$5, education=$6, type=$7, role=$8 ,password=$9, "dateOfEntry"=$10, "dateOfModify"=$11, active=$12 WHERE id = $13';
+  const sql = 'UPDATE employee set name=$1, email=$2, address=$3, "dateOfBirth"=$4 ,"dateOfJoining"=$5, education=$6, type=$7, role=$8 ,password=$9, "dateOfModify"=$10, active=$11 WHERE id = $12';
   d=new Date();
-   employee.dateOfEntry= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString()
   employee.dateOfModify= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString();
-  const values = [employee.name,employee.email,employee.address,employee.dateOfBirth,employee.dateOfJoining,employee.education,employee.type,employee.role ,employee.password, employee.dateOfEntry,employee.dateOfModify,employee.active];
+  const values = [employee.name,employee.email,employee.address,employee.dateOfBirth,employee.dateOfJoining,employee.education,employee.type,employee.role ,employee.password,employee.dateOfModify,employee.active,employee.id];
   try {
     return pool.query(sql, values)
     console.log(res.rows[0])
