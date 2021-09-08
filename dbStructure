@@ -95,3 +95,11 @@ REFERENCES employee(id)
 ON DELETE CASCADE
 ON UPDATE CASCADE
 );
+
+INSERT INTO public.attendance(
+id,employeeid,date,intimedate,outtime,totalhours)
+VALUES (1,1,'02-02-2021','04-04-2025','02-02-2021',365);
+
+INSERT INTO public.attendance(
+id,employeeid,date,intimedate,outtime,totalhours)
+VALUES (2,2,'01-02-2021','03-04-2025','02-02-2021',466);
