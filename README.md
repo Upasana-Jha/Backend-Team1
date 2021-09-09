@@ -7,6 +7,7 @@
    - Upasana
 
 ---Using PSQL---
-1.Create Tables in PSQL queries for creating the tables are under 
+
+1.Create Tables in PSQL queries for creating the tables are under dbStructure.
 
 
