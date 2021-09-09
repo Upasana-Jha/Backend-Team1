@@ -13,6 +13,10 @@
         {
             "name": "Leaves",
             "description": "Leaves"
+        },
+        {
+            "name": "Attendance",
+            "description": "Attendance"
         }
         
     ],
@@ -110,7 +114,7 @@
                         "name": "Body",
                         "description": "Employee item to delete",
                         "schema": {
-                            "$ref": "#/definitions/delete-employee"
+                            "$ref": "#/definitions/update-employee"
                         }
                     }
                 ],
@@ -211,7 +215,108 @@
                         "name": "Body",
                         "description": "leaves item to delete",
                         "schema": {
-                            "$ref": "#/definitions/delete-employee"
+                            "$ref": "#/definitions/update-leaves"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "item deleted"
+                    }
+                }
+            }
+        },
+        "/api/attendance": {
+            "get": {
+                "tags": [
+                    "Attendance"
+                ],
+                "summary": "get attendance",
+                "description": "get attendance",
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "item created"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Attendance"
+                ],
+                "summary": "add attendance",
+                "description": "addattendance",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Body",
+                        "description": "attendance item to add",
+                        "schema": {
+                            "$ref": "#/definitions/attendance"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "item created"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Attendance"
+                ],
+                "summary": "update attendance",
+                "description": "update attendance",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Body",
+                        "description": "attendance item to update",
+                        "schema": {
+                            "$ref": "#/definitions/update-attendance"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "item updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Attendance"
+                ],
+                "summary": "delete attendance",
+                "description": "delete attendance",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Body",
+                        "description": "attendance item to delete",
+                        "schema": {
+                            "$ref": "#/definitions/update-attendance"
                         }
                     }
                 ],
@@ -264,6 +369,32 @@
                         "in": "path",
                         "name": "id",
                         "description": "leaves id to get record",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "get item"
+                    }
+                }
+            }
+        },
+        "/api/attendance/{id}": {
+            "get": {
+                "tags": [
+                    "Attendance"
+                ],
+                "summary": "get by id attendance",
+                "description": "get by id attendance",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "attendance id to get record",
                         "required": true,
                         "type": "integer"
                     }
@@ -371,6 +502,34 @@
                    
                }
            },
+           "attendance": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+             "employeeid": {
+                 "type": "string",
+                 "example": "1"
+             },
+             "date": {
+                 "type": "date",
+                 "example": "2020-10-02"
+             },
+             "intimedate": {
+                 "type": "datetime",
+                 "example": "2021-09-09 11:06:03"
+             },
+             "outtime": {
+                 "type": "datetime",
+                 "example": "2021-09-09 11:06:03"
+             },
+             "totalhours": {
+                 "type": "integer",
+                 "example": "202"
+             }   
+            }
+        },
 
            "update-leaves": {
                "type": "object",
@@ -473,23 +632,38 @@
                 
             }
         },
-        "delete-employee": {
+        "update-attendance": {
             "type": "object",
             "required": [
-                "id"
-                
+                "name"
             ],
             "properties": {
-                "id": {
-                    "type": "intger",
-                    "example": 1
-                }
+             "employeeid": {
+                 "type": "string",
+                 "example": "1"
+             },
+             "date": {
+                "type": "date",
+                "example": "2020-10-02"
+            },
+            "intimedate": {
+                "type": "datetime",
+                "example": "2021-09-09 11:06:03"
+            },
+            "outtime": {
+                "type": "datetime",
+                "example": "2021-09-09 11:06:03"
+            },
+            "totalhours": {
+                "type": "integer",
+                "example": "202"
+            }
                 
             }
         }
+        
         
        
     }
 
 }
-     
