@@ -1,0 +1,277 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a simple api structure for testing purpose.",
+        "version": "1.0.0",
+        "title": "https://nodeapi.pyther.com customer API's"
+    },
+    "tags": [
+        {
+            "name": "Employee",
+            "description": "Employee"
+        }
+        
+    ],
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/api/employee": {
+            "get": {
+                "tags": [
+                    "Employee"
+                ],
+                "summary": "get employee",
+                "description": "get employee",
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "item created"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Employee"
+                ],
+                "summary": "add employee",
+                "description": "add employee",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Body",
+                        "description": "Employee item to add",
+                        "schema": {
+                            "$ref": "#/definitions/employee"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "item created"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Employee"
+                ],
+                "summary": "update employee",
+                "description": "update employee",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Body",
+                        "description": "Employee item to update",
+                        "schema": {
+                            "$ref": "#/definitions/update-employee"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "item updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Employee"
+                ],
+                "summary": "delete employee",
+                "description": "delete employee",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Body",
+                        "description": "Employee item to delete",
+                        "schema": {
+                            "$ref": "#/definitions/update-employee"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "item deleted"
+                    }
+                }
+            }
+        },
+        "/api/employee/{id}": {
+            "get": {
+                "tags": [
+                    "Employee"
+                ],
+                "summary": "get by id employee",
+                "description": "get by id employee",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "employee id to get record",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "get item"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "employee": {
+               "type": "object",
+               "required": [
+                   "name"
+               ],
+               "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "Rama"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "rama@india.com"
+                },
+                "address": {
+                    "type": "string",
+                    "example": "Ayodhya, India"
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "example": "2000-02-02"
+                },
+                "dateOfJoining": {
+                    "type": "string",
+                    "example": "2020-02-02"
+                },
+                "education": {
+                    "type": "string",
+                    "example": "BTech"
+                },
+                "type": {
+                    "type": "string",
+                    "example": "Manager"
+                },
+                "role": {
+                    "type": "string",
+                    "example": "Admin"
+                },
+                "password": {
+                    "type": "string",
+                    "example": "password"
+                },
+                "dateOfEntry": {
+                    "type": "datetime",
+                    "example": "2021-09-09 11:06:03"
+                },
+                "dateOfModify": {
+                    "type": "datetime",
+                    "example": "2021-09-09 11:06:03"
+                },
+                "active": {
+                    "type": "boolean",
+                    "example": true
+                }
+                   
+               }
+           },
+        
+        
+        "update-employee": {
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "783432"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Rama"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "rama@india.com"
+                },
+                "address": {
+                    "type": "string",
+                    "example": "Ayodhya, India"
+                },
+                "dateOfBirth": {
+                    "type": "string",
+                    "example": "2000-02-02"
+                },
+                "dateOfJoining": {
+                    "type": "string",
+                    "example": "2020-02-02"
+                },
+                "education": {
+                    "type": "string",
+                    "example": "BTech"
+                },
+                "type": {
+                    "type": "string",
+                    "example": "Manager"
+                },
+                "role": {
+                    "type": "string",
+                    "example": "Admin"
+                },
+                "password": {
+                    "type": "string",
+                    "example": "password"
+                },
+                "dateOfEntry": {
+                    "type": "datetime",
+                    "example": "2021-09-09 11:06:03"
+                },
+                "dateOfModify": {
+                    "type": "datetime",
+                    "example": "2021-09-09 11:06:03"
+                },
+                "active": {
+                    "type": "boolean",
+                    "example": true
+                }
+                
+            }
+        }
+        
+       
+    }
+
+}
+     
+    
+
+
