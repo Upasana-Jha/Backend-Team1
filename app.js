@@ -11,18 +11,20 @@ var path = require('path');
 //var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-
+var usersRouter = require('./routes/users');
 var apiEmployee = require('./routes/api-employee');
 var apiSalaries = require('./routes/api-salaries');
 var apiLeaves = require('./routes/api-leaves');
 var apiAttendance = require('./routes/api-attendance');
 
 var cors = require('cors')
+var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 
 
 //var session = require('cookie-session')
 var app = express();
 
+app.set('superSecret', 'trainingIsGood'); // secret variable
 
 // view engine setup
 
@@ -42,19 +44,38 @@ app.use(express.json());
 //app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-/*
-app.use((req,res,next)=>{
+app.use('/api/',usersRouter);
+
+app.use(function(req, res, next) {
 console.log("security point");
-if(typeof(req.session.user) == 'string')
-{
-  next();
-}
-else
-{
-  res.send({result:"fail",msg:"you do not have access to api"})
-}
-})
-*/
+  // check header or url parameters or post parameters for token
+  var token = req.body.token || req.param('token') || req.headers['x-access-token'];
+  // decode token
+  if (token) {
+
+    // verifies secret and checks exp
+    jwt.verify(token, app.get('superSecret'), function(err, decoded) {      
+      if (err) {
+        return res.json({ success: false, message: 'Failed to authenticate token.' });    
+      } else {
+        // if everything is good, save to request for use in other routes
+        req.decoded = decoded;  
+        next();
+      }
+    });
+
+  } else {
+
+    // if there is no token
+    // return an error
+    return res.status(403).send({ 
+      success: false, 
+      message: 'No token provided.'
+    });
+  }
+});
+
+
 app.use('/api/employee', apiEmployee);
 app.use('/api/salaries', apiSalaries);
 app.use('/api/leaves', apiLeaves);
