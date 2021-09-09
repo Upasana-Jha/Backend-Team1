@@ -23,6 +23,23 @@ service.getEmployees = function() {
        
     })
 }
+
+service.getPasswordByEmail = function(email) {
+     return new Promise((resolve, reject) => {
+         //promise inside
+         pool.query("SELECT * from employee where email='"+email+"'", function (error, results, fields) {
+          if (error) {
+            resolve([]);
+            throw error;
+          }else{
+            console.log(results.rows)
+            resolve(results.rows);
+          }
+        });
+       
+    })
+}
+
 service.addEmployee = function(employee) {
   d=new Date();
   const text = 'INSERT INTO employee(name, email,address,"dateOfBirth","dateOfJoining",education,type,role,password,"dateOfEntry","dateOfModify",active) VALUES($1, $2, $3, $4, $5,$6,$7,$8,$9,$10,$11,$12) RETURNING *';
