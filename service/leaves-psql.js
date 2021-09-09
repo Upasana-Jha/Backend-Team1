@@ -25,10 +25,10 @@ service.getLeaves = function() {
 }
 service.addLeaves = function(employee) {
   d=new Date();
-  const text = 'INSERT INTO leaves(employeeid,"startDate","endDate",count,year,"dateOfEntry","dateOfModify") VALUES($1, $2, $3, $4, $5,$6,$7) RETURNING *';
-  leaves.dateOfModify= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString()
-  leaves.dateOfEntry= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString()
-  const values = [employee.employeeid,employee.startDate,employee.endDate,employee.count,employee.year,employee.dateOfEntry,employee.dateOfModify];
+  const text = 'INSERT INTO leaves(employeeid,"startdate","enddate",count,year,"dateofentry","dateofmodify") VALUES($1, $2, $3, $4, $5,$6,$7) RETURNING *';
+  employee.dateofmodify= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString()
+  employee.dateofentry= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString()
+  const values = [employee.employeeid,employee.startdate,employee.enddate,employee.count,employee.year,employee.dateofentry,employee.dateofmodify];
   try {
     console.log("HII");
     return pool.query(text, values)
@@ -66,11 +66,11 @@ service.getLeavesByEmployeeId = function(employeeid){
 };
 
 service.updateLeaves = function(employee){
-  const sql = 'UPDATE leaves set startDate=$1, endDate=$2, count=$3, year=$4 , "dateOfEntry"=$5, "dateOfModify"=$6 WHERE employeeid = $8';
+  const sql = 'UPDATE leaves set startdate=$1, enddate=$2, count=$3, year=$4 , "dateofentry"=$5, "dateofmodify"=$6 WHERE employeeid = $7';
   d=new Date();
-   employee.dateOfEntry= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString()
-  employee.dateOfModify= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString();
-  const values = [employee.startDate,employee.endDate,employee.count,employee.year, employee.dateOfEntry,employee.dateOfModify];
+   employee.dateofentry= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString()
+  employee.dateofmodify= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString();
+  const values = [employee.startdate,employee.enddate,employee.count,employee.year, employee.dateofentry,employee.dateofmodify,employee.employeeid];
   try {
     return pool.query(sql, values)
     console.log(res.rows[0])
