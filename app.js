@@ -9,6 +9,8 @@ var usersRouter = require('./routes/users');
 var apiRouter = require('./routes/api');
 
 var apiEmployee = require('./routes/api-employee');
+var apiSalaries = require('./routes/api-salaries');
+
 var securePagesRouter = require('./routes/secureindex');
 var cors = require('cors')
 
@@ -53,6 +55,8 @@ else
 
 */
 app.use('/api/employee', apiEmployee);
+app.use('/api/salaries', apiSalaries);
+
 
 
 // catch 404 and forward to error handler
