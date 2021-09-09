@@ -10,6 +10,7 @@ var apiRouter = require('./routes/api');
 
 var apiEmployee = require('./routes/api-employee');
 var apiSalaries = require('./routes/api-salaries');
+var apiLeaves = require('./routes/api-leaves');
 
 var securePagesRouter = require('./routes/secureindex');
 var cors = require('cors')
@@ -56,6 +57,7 @@ else
 */
 app.use('/api/employee', apiEmployee);
 app.use('/api/salaries', apiSalaries);
+app.use('/api/leaves', apiLeaves);
 
 
 
