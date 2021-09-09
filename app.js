@@ -4,15 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var apiRouter = require('./routes/api');
 
 var apiEmployee = require('./routes/api-employee');
 var apiSalaries = require('./routes/api-salaries');
 var apiLeaves = require('./routes/api-leaves');
 
-var securePagesRouter = require('./routes/secureindex');
 var cors = require('cors')
 
 
@@ -21,8 +17,7 @@ var app = express();
 
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+
 app.use(cors());
 var sess = {
   secret: 'keyboard cat',
