@@ -24,13 +24,13 @@ router.post('/', async function (req, res) {
 
 router.put('/', async function (req, res) {
   await updateSalary(req.body);
-  res.send({result:"ok", msg:"employee updated ok"});
+  res.send({result:"ok", msg:"salary updated ok"});
 });
 
 
 router.delete('/', async function (req, res) {
   await deleteSalary(req.body)
-  res.send({result:"ok", msg:"employee deleted ok"}); //response to client
+  res.send({result:"ok", msg:"salary deleted ok"}); //response to client
 });
 
 
