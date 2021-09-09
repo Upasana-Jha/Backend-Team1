@@ -1,7 +1,14 @@
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+//var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 
@@ -13,7 +20,7 @@ var apiAttendance = require('./routes/api-attendance');
 var cors = require('cors')
 
 
-var session = require('cookie-session')
+//var session = require('cookie-session')
 var app = express();
 
 
@@ -27,12 +34,12 @@ var sess = {
   resave: true,
   saveUninitialized: true
 }
-app.use(session(sess));
+//app.use(session(sess));
 app.use(logger('dev'));
 app.use(express.json());
 
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+//app.use(express.urlencoded({ extended: false }));
+//app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 /*
@@ -46,10 +53,7 @@ else
 {
   res.send({result:"fail",msg:"you do not have access to api"})
 }
-
-
 })
-
 */
 app.use('/api/employee', apiEmployee);
 app.use('/api/salaries', apiSalaries);
