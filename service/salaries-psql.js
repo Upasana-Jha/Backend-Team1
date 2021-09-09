@@ -38,6 +38,7 @@ service.addSalary = function(employee) {
 };
 
 service.deleteSalary = function({id}){
+  console.log("id",id);
   const sql = "delete FROM salaries where id='"+id+"'";
   try {
     return pool.query(sql);
@@ -65,7 +66,7 @@ service.getSalaryByEmployeeId = function(employeeid){
 };
 
 service.updateSalary = function(employee){
-  const sql = 'UPDATE salaries set monthyear=$1, basic=$2, hra=$3, lta=$4 ,variable=$5, bonus=$6, tds=$7, tax=$8 ,total=$9,workingdaysinmonth=$9, "dateOfModify"=$10, WHERE employeeid = $12';
+  const sql = 'UPDATE salaries set monthyear=$1, basic=$2, hra=$3, lta=$4 ,variable=$5, bonus=$6, tds=$7, tax=$8 ,total=$9,workingdaysinmonth=$10, dateOfModify=$11 WHERE employeeid = $12';
   d=new Date();
   employee.dateOfModify= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString();
   const values = [employee.monthyear,employee.basic,employee.hra,employee.lta,employee.variable,employee.bonus,employee.tds,employee.tax,employee.total ,employee.workingdaysinmonth,employee.dateOfModify,employee.employeeid];
