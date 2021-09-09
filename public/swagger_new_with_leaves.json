@@ -3,7 +3,7 @@
     "info": {
         "description": "This is a simple api structure for testing purpose.",
         "version": "1.0.0",
-        "title": "https://nodeapi.pyther.com customer API's"
+        "title": "HRMIS SWAGGER"
     },
     "tags": [
         {
@@ -13,6 +13,10 @@
         {
             "name": "Leaves",
             "description": "Leaves"
+        },
+        {
+            "name":"Salaries",
+            "description":"Salaries"
         }
         
     ],
@@ -223,6 +227,110 @@
             }
         },
 
+     "/api/salaries": {
+            "get": {
+                "tags": [
+                    "Salaries"
+                ],
+                "summary": "get salaries",
+                "description": "get salaries",
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "item created"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Salaries"
+                ],
+                "summary": "add salaries",
+                "description": "add salaries",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Body",
+                        "description": "salaries item to add",
+                        "schema": {
+                            "$ref": "#/definitions/salaries"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "item created"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Salaries"
+                ],
+                "summary": "update salaries",
+                "description": "update salaries",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Body",
+                        "description": "leaves item to update",
+                        "schema": {
+                            "$ref": "#/definitions/update-salaries"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "item updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Salaries"
+                ],
+                "summary": "delete salaries",
+                "description": "delete salaries",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Body",
+                        "description": "salaries item to delete",
+                        "schema": {
+                            "$ref": "#/definitions/update-salaries"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "item deleted"
+                    }
+                }
+            }
+        },
+
+
+
         "/api/employee/{id}": {
             "get": {
                 "tags": [
@@ -249,6 +357,36 @@
                 }
             }
         },
+
+        "/api/salaries/{id}": {
+            "get": {
+                "tags": [
+                    "Salaries"
+                ],
+                "summary": "get by id salaries",
+                "description": "get by id salaries",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "salaries id to get record",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "get item"
+                    }
+                }
+            }
+        },
+
+
+
         "/api/leaves/{id}": {
             "get": {
                 "tags": [
@@ -372,6 +510,68 @@
                }
            },
 
+
+           "salaries": {
+               "type": "object",
+               "required": [
+                   "name"
+               ],
+               "properties": {
+                "employeeid": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "monthYear":{
+                    "type":"string",
+                    "example":"2020"
+                },
+                "basic":{
+                    "type":"string",
+                    "example":"20200"
+                },
+                "hra":{
+                    "type":"string",
+                    "example":"2020"
+                },
+                "Ita": {
+                    "type": "string",
+                    "example": "2020"
+                },
+                "variable": {
+                    "type": "string",
+                    "example": "2020"
+                },
+                "bonus": {
+                    "type": "string",
+                    "example": "2000"
+                },
+                "TDS": {
+                    "type": "string",
+                    "example": "2020"
+                },
+                "tax": {
+                    "type": "string",
+                    "example": "2020"
+                },
+                 "workingDaysInMonth": {
+                    "type": "string",
+                    "example": "30"
+                },
+                "dateofentry": {
+                    "type": "datetime",
+                    "example": "2021-09-09 11:06:03"
+                },
+                "dateofmodify": {
+                    "type": "datetime",
+                    "example": "2021-09-09 11:06:03"
+                }
+                   
+               }
+           },
+
+
+
+
            "update-leaves": {
                "type": "object",
                "required": [
@@ -397,6 +597,64 @@
                 "year": {
                     "type": "string",
                     "example": "2020"
+                },
+                "dateofentry": {
+                    "type": "datetime",
+                    "example": "2021-09-09 11:06:03"
+                },
+                "dateofmodify": {
+                    "type": "datetime",
+                    "example": "2021-09-09 11:06:03"
+                }
+                   
+               }
+           },
+
+           "update-salaries": {
+               "type": "object",
+               "required": [
+                   "name"
+               ],
+               "properties": {
+                "employeeid": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "monthYear":{
+                    "type":"string",
+                    "example":"2020"
+                },
+                "basic":{
+                    "type":"string",
+                    "example":"20200"
+                },
+                "hra":{
+                    "type":"string",
+                    "example":"2020"
+                },
+                "Ita": {
+                    "type": "string",
+                    "example": "2020"
+                },
+                "variable": {
+                    "type": "string",
+                    "example": "2020"
+                },
+                "bonus": {
+                    "type": "string",
+                    "example": "2000"
+                },
+                "TDS": {
+                    "type": "string",
+                    "example": "2020"
+                },
+                "tax": {
+                    "type": "string",
+                    "example": "2020"
+                },
+                 "workingDaysInMonth": {
+                    "type": "string",
+                    "example": "30"
                 },
                 "dateofentry": {
                     "type": "datetime",
