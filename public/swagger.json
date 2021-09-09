@@ -9,6 +9,10 @@
         {
             "name": "Employee",
             "description": "Employee"
+        },
+        {
+            "name": "Leaves",
+            "description": "Leaves"
         }
         
     ],
@@ -106,7 +110,7 @@
                         "name": "Body",
                         "description": "Employee item to delete",
                         "schema": {
-                            "$ref": "#/definitions/update-employee"
+                            "$ref": "#/definitions/delete-employee"
                         }
                     }
                 ],
@@ -117,6 +121,108 @@
                 }
             }
         },
+        "/api/leaves": {
+            "get": {
+                "tags": [
+                    "Leaves"
+                ],
+                "summary": "get leaves",
+                "description": "get leaves",
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "item created"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Leaves"
+                ],
+                "summary": "add leaves",
+                "description": "addleaves",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Body",
+                        "description": "leaves item to add",
+                        "schema": {
+                            "$ref": "#/definitions/leaves"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "item created"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Leaves"
+                ],
+                "summary": "update leaves",
+                "description": "update leaves",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Body",
+                        "description": "leaves item to update",
+                        "schema": {
+                            "$ref": "#/definitions/update-leaves"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "item updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Leaves"
+                ],
+                "summary": "delete leaves",
+                "description": "delete leaves",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Body",
+                        "description": "leaves item to delete",
+                        "schema": {
+                            "$ref": "#/definitions/delete-employee"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "item deleted"
+                    }
+                }
+            }
+        },
+
         "/api/employee/{id}": {
             "get": {
                 "tags": [
@@ -132,6 +238,32 @@
                         "in": "path",
                         "name": "id",
                         "description": "employee id to get record",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "get item"
+                    }
+                }
+            }
+        },
+        "/api/leaves/{id}": {
+            "get": {
+                "tags": [
+                    "Leaves"
+                ],
+                "summary": "get by id leaves",
+                "description": "get by id leaves",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "leaves id to get record",
                         "required": true,
                         "type": "integer"
                     }
@@ -202,6 +334,81 @@
                    
                }
            },
+           "leaves": {
+               "type": "object",
+               "required": [
+                   "name"
+               ],
+               "properties": {
+                "employeeid": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "startdate": {
+                    "type": "string",
+                    "example": "2020-10-02"
+                },
+                "enddate": {
+                    "type": "string",
+                    "example": "2020-10-03"
+                },
+                "count": {
+                    "type": "string",
+                    "example": "2"
+                },
+                "year": {
+                    "type": "string",
+                    "example": "2020"
+                },
+                "dateofentry": {
+                    "type": "datetime",
+                    "example": "2021-09-09 11:06:03"
+                },
+                "dateofmodify": {
+                    "type": "datetime",
+                    "example": "2021-09-09 11:06:03"
+                }
+                   
+               }
+           },
+
+           "update-leaves": {
+               "type": "object",
+               "required": [
+                   "name"
+               ],
+               "properties": {
+                "employeeid": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "startdate": {
+                    "type": "string",
+                    "example": "2020-10-02"
+                },
+                "enddate": {
+                    "type": "string",
+                    "example": "2020-10-03"
+                },
+                "count": {
+                    "type": "string",
+                    "example": "2"
+                },
+                "year": {
+                    "type": "string",
+                    "example": "2020"
+                },
+                "dateofentry": {
+                    "type": "datetime",
+                    "example": "2021-09-09 11:06:03"
+                },
+                "dateofmodify": {
+                    "type": "datetime",
+                    "example": "2021-09-09 11:06:03"
+                }
+                   
+               }
+           },
         
         
         "update-employee": {
@@ -265,6 +472,20 @@
                 }
                 
             }
+        },
+        "delete-employee": {
+            "type": "object",
+            "required": [
+                "id"
+                
+            ],
+            "properties": {
+                "id": {
+                    "type": "intger",
+                    "example": 1
+                }
+                
+            }
         }
         
        
@@ -272,6 +493,3 @@
 
 }
      
-    
-
-
