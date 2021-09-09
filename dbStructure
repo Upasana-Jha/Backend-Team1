@@ -109,7 +109,7 @@ ON UPDATE CASCADE
 );
 
        <<<INSERT QUERIES>>>
-	   	   
+	   	  
 INSERT INTO public.attendance(
 id,employeeid,date,intimedate,outtime,totalhours)
 VALUES (1,1,'02-02-2021','04-04-2025','02-02-2021',365);
