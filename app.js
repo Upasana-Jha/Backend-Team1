@@ -8,6 +8,7 @@ var logger = require('morgan');
 var apiEmployee = require('./routes/api-employee');
 var apiSalaries = require('./routes/api-salaries');
 var apiLeaves = require('./routes/api-leaves');
+var apiAttendance = require('./routes/api-attendance');
 
 var cors = require('cors')
 
@@ -53,6 +54,7 @@ else
 app.use('/api/employee', apiEmployee);
 app.use('/api/salaries', apiSalaries);
 app.use('/api/leaves', apiLeaves);
+app.use('/api/attendance',apiAttendance);
 
 
 
