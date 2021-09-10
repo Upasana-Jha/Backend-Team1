@@ -16,12 +16,16 @@ router.post('/authenticate', async function(req, res, next) {
 let email = req.body.email;
   let record = await getPasswordByEmail(email);
 password= record[0].password;
+employeeid = record[0].id;
+emprole = record[0].role;
 
   if(req.body.password === password && typeof(req.body.email) != 'undefined'){
     //req.session.user = req.body.username;
     //generating token
     var payload = {
-      admin: req.body.username  
+      user: req.body.email,
+      employeeid: employeeid,
+      emprole:emprole  
     }
     var token = jwt.sign(payload, app.get('superSecret'), {
       expiresIn: 86400 // expires in 24 hours
