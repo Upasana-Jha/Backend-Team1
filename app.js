@@ -59,7 +59,7 @@ console.log("security point");
         return res.json({ success: false, message: 'Failed to authenticate token.' });    
       } else {
         // if everything is good, save to request for use in other routes
-        req.decoded = decoded;  
+        req.decoded = decoded; 
         next();
       }
     });
@@ -76,9 +76,52 @@ console.log("security point");
 });
 
 
-app.use('/api/employee', apiEmployee);
 app.use('/api/salaries', apiSalaries);
 app.use('/api/leaves', apiLeaves);
+
+
+app.use(function(req, res, next) {
+console.log("security point");
+  // check header or url parameters or post parameters for token
+  var token = req.body.token || req.param('token') || req.headers['x-access-token'];
+  // decode token
+  if (token) {
+
+    // verifies secret and checks exp
+    jwt.verify(token, app.get('superSecret'), function(err, decoded) {      
+      if (err) {
+        return res.json({ success: false, message: 'Failed to authenticate token.' });    
+      } else {
+        // if everything is good, save to request for use in other routes
+        req.decoded = decoded; 
+        if(req.decoded.emprole === "admin") 
+        {
+          next();
+        }
+        else{
+          return res.status(403).send({ 
+      success: false, 
+      message: 'You are not authorized'
+    });
+        }
+        
+      }
+    });
+
+  } else {
+
+    // if there is no token
+    // return an error
+    return res.status(403).send({ 
+      success: false, 
+      message: 'No token provided.'
+    });
+  }
+});
+
+
+app.use('/api/employee', apiEmployee);
+
 app.use('/api/attendance',apiAttendance);
 
 
