@@ -102,5 +102,5 @@ service.updateEmployee = function(employee){
 
 
 
-module.exports=service;
+module.exports
 
