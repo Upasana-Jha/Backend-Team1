@@ -1,37 +1,44 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-var {addSalary,getSalaries,updateSalary,deleteSalary,getSalaryByEmployeeId} = require('../service/salaries-psql.js')
+
+const { Sequelize } = require('sequelize');
+const Salaries = require('../models/salaries')
 
 
 //api/employee
-
 router.get('/', async (req, res, next) => {
-  let records = await getSalaries();
-  res.send(records);
+   await Salaries.findAll().then((records)=>{
+    res.send(records);
+   });
+  
 });
-
 router.get('/:id/:monthyear', async function (req, res) {
-  console.log("id:"+req.params.id);
-  let record = await getSalaryByEmployeeId(req.params.id,req.params.monthyear);
-  res.send(record);
+  await Salaries.findOne({where:{employeeid:req.params.id,monthyear:req.params.monthyear}}).then((records)=>{
+    res.send(records);
+   });
 });
 
 router.post('/', async function (req, res) {
-  await addSalary(req.body);
-  res.send({result:"ok", msg:"salary added ok"});
+  await Salaries.create(req.body);
+  res.send({result:"ok", msg:"Salaries added ok"});
+});
+
+router.delete('/', async function (req, res) {
+  await Salaries.destroy({where:{id:req.body.id}}).then(result=>
+    res.send({result:'success',msg:"Salaries deleted successfully"}),
+    err =>
+    res.send({result:'fail',msg:"Salaries deletion failed"}))
+ 
 });
 
 router.put('/', async function (req, res) {
-  await updateSalary(req.body);
-  res.send({result:"ok", msg:"salary updated ok"});
+  await Salaries.update(req.body,{where :{id:req.body.id}}).then(result =>
+    res.send({result:'success', msg:"Salaries updated successfully"}),
+  err =>
+    res.send({result:'fail', msg:"Salaries updatation failed"})
+  );
+  
 });
-
-
-router.delete('/', async function (req, res) {
-  await deleteSalary(req.body)
-  res.send({result:"ok", msg:"salary deleted ok"}); //response to client
-});
-
 
 module.exports = router;
