@@ -56,21 +56,6 @@
             }
         },
         "/api/authenticate":{
-            "get": {
-                "tags": [
-                    "Login"
-                ],
-                "summary": "get login",
-                "description": "get login",
-                "consumes": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "item "
-                    }
-                }
-            },
             "post": {
                 "tags": [
                     "Login"
