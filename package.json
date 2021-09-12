@@ -15,11 +15,13 @@
     "express-session": "^1.17.2",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
+    "md5": "^2.3.0",
     "mongodb": "^4.1.0",
     "morgan": "~1.9.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.0",
     "pg": "^8.7.1",
+    "reverse-md5": "0.0.5",
     "sequelize": "^6.6.5"
   }
 }
