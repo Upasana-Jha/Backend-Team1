@@ -39,11 +39,11 @@ INSERT INTO public.employee(
 	
 INSERT INTO public.employee(
 	id, name, email, address, "dateOfBirth", "dateOfJoining", education, type, role, password, "dateOfEntry", "dateOfModify","active")
-	VALUES (5, 'Employee5', 'emp5@mail.com', 'Australia', '13-11-2002', '13-04-2021', 'B.Tech', 'engineer', 'admin', 'Password', '02-04-2021', '03-05-2021','true');
+	VALUES (5, 'Employee5', 'emp5@mail.com', 'Australia', '03-11-2002', '03-04-2021', 'B.Tech', 'engineer', 'admin', 'Password', '02-04-2021', '03-05-2021','true');
 	
 INSERT INTO public.employee(
 	id, name, email, address, "dateOfBirth", "dateOfJoining", education, type, role, password, "dateOfEntry", "dateOfModify","active")
-	VALUES (6, 'Employee6', 'emp6@mail.com', 'Germany', '11-12-2003', '14-04-2021', 'B.Tech', 'contract', 'normal', 'Password', '04-04-2021', '05-05-2021','true');
+	VALUES (6, 'Employee6', 'emp6@mail.com', 'Germany', '11-12-2003', '12-04-2021', 'B.Tech', 'contract', 'normal', 'Password', '04-04-2021', '05-05-2021','true');
 	
 INSERT INTO public.employee(
 	id, name, email, address, "dateOfBirth", "dateOfJoining", education, type, role, password, "dateOfEntry", "dateOfModify","active")
