@@ -14,7 +14,7 @@ router.get('/', async (req, res, next) => {
   
 });
 router.get('/:id', async function (req, res) {
-  await Leaves.findOne({where:{id:req.params.id}}).then((records)=>{
+  await Leaves.findOne({where:{employeeid:req.params.id}}).then((records)=>{
     res.send(records);
    });
 });
