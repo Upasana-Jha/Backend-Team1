@@ -7,6 +7,7 @@ const pool = new Pool({
   port: 5432,
 })
 var service = {};
+var md5 = require('md5');
 
 service.getEmployees = function() {
      return new Promise((resolve, reject) => {
@@ -23,6 +24,7 @@ service.getEmployees = function() {
        
     })
 }
+
 
 service.getPasswordByEmail = function(email) {
      return new Promise((resolve, reject) => {
@@ -42,6 +44,9 @@ service.getPasswordByEmail = function(email) {
 
 service.addEmployee = function(employee) {
   d=new Date();
+  //
+  employee.password = md5(employee.password);
+  console.log(employee.password);
   const text = 'INSERT INTO employee(name, email,address,"dateOfBirth","dateOfJoining",education,type,role,password,"dateOfEntry","dateOfModify",active) VALUES($1, $2, $3, $4, $5,$6,$7,$8,$9,$10,$11,$12) RETURNING *';
   employee.dateOfModify= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString()
   employee.dateOfEntry= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString()
