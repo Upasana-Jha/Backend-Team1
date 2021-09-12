@@ -3,6 +3,7 @@ var router = express.Router();
 var app = express();
 var {getPasswordByEmail} = require('../service/employee-psql.js')
 var jwt = require('jsonwebtoken')
+var md5 = require('md5')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -12,14 +13,17 @@ router.get('/', function(req, res, next) {
 app.set('superSecret', 'trainingIsGood'); // secret variable
 
 router.post('/authenticate', async function(req, res, next) {
-  console.log(req.body);
 let email = req.body.email;
-  let record = await getPasswordByEmail(email);
-password= record[0].password;
+let record = await getPasswordByEmail(email);
+
+
+reqPassword = md5(req.body.password)
+console.log("password",reqPassword);
 employeeid = record[0].id;
 emprole = record[0].role;
+password = record[0].password;
 
-  if(req.body.password === password && typeof(req.body.email) != 'undefined'){
+  if(reqPassword === password && typeof(req.body.email) != 'undefined'){
     //req.session.user = req.body.username;
     //generating token
     var payload = {
