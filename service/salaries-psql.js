@@ -47,19 +47,22 @@ service.deleteSalary = function({id}){
   }
 };
 
-service.getSalaryByEmployeeId = function(employeeid){
+service.getSalaryByEmployeeId = function(employeeid,monthyear){
        return new Promise((resolve, reject) => {
          //promise inside
-         pool.query('SELECT * from salaries where employeeid='+employeeid, function (error, results, fields) {
+         pool.query("SELECT * from salaries where employeeid="+employeeid + "AND monthyear='"+ monthyear+"'", function (error, results, fields) {
           if (error) {
             resolve({});
             throw error;
           }else{
-            if(results.rows.length > 0){
-              resolve(results.rows[0]);
+            /*if(results.rows.length > 0){
+              resolve(results.rows[1]);
             }else{
               resolve({});
+
             } 
+            */
+            resolve(results.rows);
           }
         });
     })
