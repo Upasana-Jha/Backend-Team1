@@ -70,14 +70,17 @@ ON DELETE CASCADE
 ON UPDATE CASCADE)
 
          <<<INSERT QUERIES>>>
-	 
-INSERT INTO public.salaries(
-id,employeeid,monthyear,basic,hra,lta,variable,bonus,TDS,tax,total,workingDaysInMonth,dateOfEntry,dateOfModify)
-VALUES (2,2,'june2021',1000,1000,1000,1000,5000,3,15,49000,30,'2021-02-02','2021-02-02');
-
 INSERT INTO public.salaries(
 id,employeeid,monthyear,basic,hra,lta,variable,bonus,TDS,tax,total,workingDaysInMonth,dateOfEntry,dateOfModify)
 VALUES (1,1,'june2021',1000,1000,1000,1000,5000,3,15,49000,30,'2021-02-02','2021-02-02');
+
+INSERT INTO public.salaries(
+id,employeeid,monthyear,basic,hra,lta,variable,bonus,TDS,tax,total,workingDaysInMonth,dateOfEntry,dateOfModify)
+VALUES (2,2,'july2021',1000,1000,1000,1000,5000,3,15,49000,30,'2021-02-02','2021-02-02');
+
+INSERT INTO public.salaries(
+id,employeeid,monthyear,basic,hra,lta,variable,bonus,TDS,tax,total,workingDaysInMonth,dateOfEntry,dateOfModify)
+VALUES (3,3,'August2021',1000,1100,1200,1300,5500,4,12,49999,30,'2021-01-01','2021-02-02');
 
 =========================================
 #  TABLE LEAVES
