@@ -75,7 +75,7 @@ service.updateSalary = function(employee){
   const values = [employee.monthyear,employee.basic,employee.hra,employee.lta,employee.variable,employee.bonus,employee.tds,employee.tax,employee.total ,employee.workingdaysinmonth,employee.dateOfModify,employee.employeeid];
   try {
     return pool.query(sql, values)
-    (res.rows[0])
+    console.log(res.rows[0])
   } catch (err) {
     console.log(err.stack)
   }
