@@ -16,6 +16,7 @@ var apiEmployee = require('./routes/api-employee');
 var apiSalaries = require('./routes/api-salaries');
 var apiLeaves = require('./routes/api-leaves');
 var apiAttendance = require('./routes/api-attendance');
+var apiAdmin = require('./routes/api-admin')
 
 var cors = require('cors')
 var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
@@ -78,6 +79,8 @@ console.log("security point");
 
 app.use('/api/salaries', apiSalaries);
 app.use('/api/leaves', apiLeaves);
+app.use('/api/employee',apiEmployee);
+app.use('/api/attendance',apiAttendance);
 
 
 app.use(function(req, res, next) {
@@ -119,12 +122,7 @@ console.log("security point");
   }
 });
 
-
-app.use('/api/employee', apiEmployee);
-
-app.use('/api/attendance',apiAttendance);
-
-
+app.use('/api', apiAdmin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
