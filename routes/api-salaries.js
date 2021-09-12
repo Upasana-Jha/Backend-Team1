@@ -11,9 +11,9 @@ router.get('/', async (req, res, next) => {
   res.send(records);
 });
 
-router.get('/:id', async function (req, res) {
+router.get('/:id/:monthyear', async function (req, res) {
   console.log("id:"+req.params.id);
-  let record = await getSalaryByEmployeeId(req.params.id);
+  let record = await getSalaryByEmployeeId(req.params.id,req.params.monthyear);
   res.send(record);
 });
 
