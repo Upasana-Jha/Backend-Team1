@@ -32,6 +32,22 @@ INSERT INTO public.employee(
 INSERT INTO public.employee(
 	id, name, email, address, "dateOfBirth", "dateOfJoining", education, type, role, password, "dateOfEntry", "dateOfModify","active")
 	VALUES (3, 'Employee3', 'emp3@mail.com', 'UK', '11-01-2000', '22-01-2021', 'BE', 'contract', 'normal', 'Password', '12-01-2021', '09-09-2021','true');
+	
+INSERT INTO public.employee(
+	id, name, email, address, "dateOfBirth", "dateOfJoining", education, type, role, password, "dateOfEntry", "dateOfModify","active")
+	VALUES (4, 'Employee4', 'emp4@mail.com', 'Austria', '01-11-2001', '12-04-2021', 'B.E', 'contract', 'normal', 'Password', '22-04-2021', '23-05-2021','true');
+	
+INSERT INTO public.employee(
+	id, name, email, address, "dateOfBirth", "dateOfJoining", education, type, role, password, "dateOfEntry", "dateOfModify","active")
+	VALUES (5, 'Employee5', 'emp5@mail.com', 'Australia', '23-11-2002', '13-04-2021', 'B.Tech', 'engineer', 'admin', 'Password', '24-04-2021', '25-05-2021','true');
+	
+INSERT INTO public.employee(
+	id, name, email, address, "dateOfBirth", "dateOfJoining", education, type, role, password, "dateOfEntry", "dateOfModify","active")
+	VALUES (6, 'Employee6', 'emp6@mail.com', 'Germany', '24-12-2003', '14-04-2021', 'B.Tech', 'contract', 'normal', 'Password', '22-04-2021', '23-05-2021','true');
+	
+INSERT INTO public.employee(
+	id, name, email, address, "dateOfBirth", "dateOfJoining", education, type, role, password, "dateOfEntry", "dateOfModify","active")
+	VALUES (7, 'Employee7', 'emp7@mail.com', 'Texas', '25-12-1999', '15-04-2021', 'B.E', 'engineer', 'admin', 'Password', '23-01-2021', '24-05-2021','true');
 ==========================================
 #. TABLE SALARIES
 
