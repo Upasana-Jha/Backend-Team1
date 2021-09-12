@@ -7,6 +7,9 @@
     },
     "tags": [
         {
+            "name":"Login"
+        },
+        {
             "name": "Employee",
             "description": "Employee"
         },
@@ -24,10 +27,80 @@
         }
         
     ],
+    
     "schemes": [
         "http"
     ],
+    "securityDefinitions":{
+    "Bearer":{
+    "type": "apiKey",
+    "name": "x-access-token",
+    "in": "header"
+    }
+    },
     "paths": {
+        "/":{
+            "get":{
+                "security":{
+                "Bearer": [],
+                "responses":{
+                        "200":{
+                            "description": "Will send Authenticated"
+                        },
+                        "403": {
+                            "description": "You do not have necessary permissions for the resource"
+                        }
+                    }
+                }
+
+            }
+        },
+        "/api/authenticate":{
+            "get": {
+                "tags": [
+                    "Login"
+                ],
+                "summary": "get login",
+                "description": "get login",
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "item "
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Login"
+                ],
+                "summary": "",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Body",
+                        "description": " user added",
+                        "schema": {
+                            "$ref": "#/definitions/login"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "item created"
+                    }
+                }
+            }
+
+        },
         "/api/employee": {
             "get": {
                 "tags": [
@@ -38,6 +111,7 @@
                 "consumes": [
                     "application/json"
                 ],
+               
                 "responses": {
                     "200": {
                         "description": "item created"
@@ -548,6 +622,25 @@
     },
     
     "definitions": {
+       
+        "login": {
+            "type": "object",
+            "required": [
+                "email",
+                "password"
+            ],
+            "properties": {
+             "email": {
+                 "type": "string",
+                 "example": "rama@india.com"
+             },
+             "password": {
+                "type": "string",
+                "example": "password"
+            }
+            }
+           
+        },
         "delete": {
             "type": "object",
             "required": [
@@ -935,8 +1028,9 @@
                 
             }
         }
-    
+        
        
     }
+    
 
 }
