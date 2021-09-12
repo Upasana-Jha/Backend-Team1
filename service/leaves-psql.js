@@ -55,11 +55,7 @@ service.getLeavesByEmployeeId = function(employeeid){
             resolve({});
             throw error;
           }else{
-            if(results.rows.length > 0){
-              resolve(results.rows[0]);
-            }else{
-              resolve({});
-            } 
+            resolve(results.rows);
           }
         });
     })
