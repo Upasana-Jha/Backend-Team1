@@ -84,31 +84,13 @@ VALUES (3,3,'August2021',1000,1100,1200,1300,5500,4,12,49999,30,'2021-01-01','20
 
 INSERT INTO public.salaries(
 id,employeeid,monthyear,basic,hra,lta,variable,bonus,TDS,tax,total,workingDaysInMonth,dateOfEntry,dateOfModify)
-VALUES (4,4,'Sept2021',1100,1200,1300,1400,5099,2,13,59000,30,'2021-03-03','2021-03-04');
-
-INSERT INTO public.salaries(
-id,employeeid,monthyear,basic,hra,lta,variable,bonus,TDS,tax,total,workingDaysInMonth,dateOfEntry,dateOfModify)
-VALUES (5,5,'Oct2021',900,1000,1100,1200,4000,3,15,39000,30,'2021-01-02','2021-02-03');
-
-INSERT INTO public.salaries(
-id,employeeid,monthyear,basic,hra,lta,variable,bonus,TDS,tax,total,workingDaysInMonth,dateOfEntry,dateOfModify)
-VALUES (6,6,'Nov2021',1200,1300,1400,1500,6000,2,15,69000,30,'2021-12-11,'2021-12-12');
-
-INSERT INTO public.salaries(
-id,employeeid,monthyear,basic,hra,lta,variable,bonus,TDS,tax,total,workingDaysInMonth,dateOfEntry,dateOfModify)
-VALUES (7,7,'Dec2021',1300,1400,1500,1600,5500,4,15,55000,30,'2021-06-06','2021-07-07');
-
-INSERT INTO public.salaries(
-id,employeeid,monthyear,basic,hra,lta,variable,bonus,TDS,tax,total,workingDaysInMonth,dateOfEntry,dateOfModify)
-VALUES (8,7,'Jan2021',1000,1250,1350,1100,5050,3,15,47000,30,'2021-01-01','2021-02-02');
-
-INSERT INTO public.salaries(
-id,employeeid,monthyear,basic,hra,lta,variable,bonus,TDS,tax,total,workingDaysInMonth,dateOfEntry,dateOfModify)
-VALUES (9,3,'Feb2021',800,900,1000,1100,4500,1,11,46000,30,'2021-02-03','2021-04-04');
-
-INSERT INTO public.salaries(
-id,employeeid,monthyear,basic,hra,lta,variable,bonus,TDS,tax,total,workingDaysInMonth,dateOfEntry,dateOfModify)
-VALUES (10,3,'Mar2021',700,800,900,1000,3500,3,12,41000,30,'2021-07-07','2021-08-08');
+VALUES (4,4,'Sept2021',1100,1200,1300,1400,5099,2,13,59000,30,'2021-03-03','2021-03-04'),
+       (5,5,'Oct2021',900,1000,1100,1200,4000,3,15,39000,30,'2021-01-02','2021-02-03'),
+       (6,6,'Nov2021',1200,1300,1400,1500,6000,2,15,69000,30,'2021-12-11','2021-12-12'),
+       (7,7,'Dec2021',1300,1400,1500,1600,5500,4,15,55000,30,'2021-06-06','2021-07-07'),
+       (8,7,'Jan2021',1000,1250,1350,1100,5050,3,15,47000,30,'2021-01-01','2021-02-02'),
+       (9,3,'Feb2021',800,900,1000,1100,4500,1,11,46000,30,'2021-02-03','2021-04-04'),
+       (10,3,'Mar2021',700,800,900,1000,3500,3,12,41000,30,'2021-07-07','2021-08-08');
 
 =========================================
 #  TABLE LEAVES
