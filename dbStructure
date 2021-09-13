@@ -12,7 +12,7 @@ address varchar(48) ,
 education varchar(25) ,
 type varchar(25),
 role varchar(25),
-password varchar(25) ,
+password varchar(100) ,
 "dateOfEntry" timestamp without time zone,
 "dateOfModify" timestamp without time zone ,
 primary key (id))
@@ -23,31 +23,31 @@ ALTER TABLE employee add column active boolean;
 
 INSERT INTO public.employee(
 	id, name, email, address, "dateOfBirth", "dateOfJoining", education, type, role, password, "dateOfEntry", "dateOfModify","active")
-	VALUES (1, 'Employee1', 'emp1@mail.com', 'India', '12-11-1999', '02-02-2021', 'B.Tech', 'engineer', 'admin', 'Password', '02-01-2021', '08-09-2021','true');
+	VALUES (1, 'Employee1', 'emp1@mail.com', 'India', '12-11-1999', '02-02-2021', 'B.Tech', 'engineer', 'admin', 'dc647eb65e6711e155375218212b3964', '02-01-2021', '08-09-2021','true');
 
 INSERT INTO public.employee(
 	id, name, email, address, "dateOfBirth", "dateOfJoining", education, type, role, password, "dateOfEntry", "dateOfModify","active")
-	VALUES (2, 'Employee2', 'emp2@mail.com', 'India', '12-11-1999', '02-02-2021', 'B.Tech', 'contract', 'normal', 'Password', '02-01-2021', '08-09-2021','true');
+	VALUES (2, 'Employee2', 'emp2@mail.com', 'India', '12-11-1999', '02-02-2021', 'B.Tech', 'contract', 'normal', 'dc647eb65e6711e155375218212b3964', '02-01-2021', '08-09-2021','true');
 	
 INSERT INTO public.employee(
 	id, name, email, address, "dateOfBirth", "dateOfJoining", education, type, role, password, "dateOfEntry", "dateOfModify","active")
-	VALUES (3, 'Employee3', 'emp3@mail.com', 'UK', '11-01-2000', '12-01-2021', 'BE', 'contract', 'normal', 'Password', '12-01-2021', '09-09-2021','true');
+	VALUES (3, 'Employee3', 'emp3@mail.com', 'UK', '11-01-2000', '12-01-2021', 'BE', 'contract', 'normal', 'dc647eb65e6711e155375218212b3964', '12-01-2021', '09-09-2021','true');
 	
 INSERT INTO public.employee(
 	id, name, email, address, "dateOfBirth", "dateOfJoining", education, type, role, password, "dateOfEntry", "dateOfModify","active")
-	VALUES (4, 'Employee4', 'emp4@mail.com', 'Austria', '01-11-2001', '12-04-2021', 'B.E', 'contract', 'normal', 'Password', '01-04-2021', '02-05-2021','true');
+	VALUES (4, 'Employee4', 'emp4@mail.com', 'Austria', '01-11-2001', '12-04-2021', 'B.E', 'contract', 'normal', 'dc647eb65e6711e155375218212b3964', '01-04-2021', '02-05-2021','true');
 	
 INSERT INTO public.employee(
 	id, name, email, address, "dateOfBirth", "dateOfJoining", education, type, role, password, "dateOfEntry", "dateOfModify","active")
-	VALUES (5, 'Employee5', 'emp5@mail.com', 'Australia', '03-11-2002', '03-04-2021', 'B.Tech', 'engineer', 'admin', 'Password', '02-04-2021', '03-05-2021','true');
+	VALUES (5, 'Employee5', 'emp5@mail.com', 'Australia', '03-11-2002', '03-04-2021', 'B.Tech', 'engineer', 'admin', 'dc647eb65e6711e155375218212b3964', '02-04-2021', '03-05-2021','true');
 	
 INSERT INTO public.employee(
 	id, name, email, address, "dateOfBirth", "dateOfJoining", education, type, role, password, "dateOfEntry", "dateOfModify","active")
-	VALUES (6, 'Employee6', 'emp6@mail.com', 'Germany', '11-12-2003', '12-04-2021', 'B.Tech', 'contract', 'normal', 'Password', '04-04-2021', '05-05-2021','true');
+	VALUES (6, 'Employee6', 'emp6@mail.com', 'Germany', '11-12-2003', '12-04-2021', 'B.Tech', 'contract', 'normal', 'dc647eb65e6711e155375218212b3964', '04-04-2021', '05-05-2021','true');
 	
 INSERT INTO public.employee(
 	id, name, email, address, "dateOfBirth", "dateOfJoining", education, type, role, password, "dateOfEntry", "dateOfModify","active")
-	VALUES (7, 'Employee7', 'emp7@mail.com', 'Texas', '09-12-1999', '12-04-2021', 'B.E', 'engineer', 'admin', 'Password', '06-01-2021', '07-05-2021','true');
+	VALUES (7, 'Employee7', 'emp7@mail.com', 'Texas', '09-12-1999', '12-04-2021', 'B.E', 'engineer', 'admin', 'dc647eb65e6711e155375218212b3964', '06-01-2021', '07-05-2021','true');
 ==========================================
 #. TABLE SALARIES
 
