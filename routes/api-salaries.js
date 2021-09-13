@@ -14,7 +14,7 @@ router.get('/', async (req, res, next) => {
   
 });
 router.get('/:id/:monthyear', async function (req, res) {
-  await Salaries.findAll({where:{employeeid:req.params.employeeid,monthyear:req.params.monthyear}}).then((records)=>{
+  await Salaries.findAll({where:{employeeid:req.params.id,monthyear:req.params.monthyear}}).then((records)=>{
     res.send(records);
    });
 });
