@@ -42,9 +42,9 @@ router.put('/employee', async function (req, res) {
  req.body.dateOfModify= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString()
  
  await Employee.update(req.body,{where :{id:req.body.id}}).then(result =>
-   res.send({result:'success', msg:"customer updated successfully"}),
+   res.send({result:'success', msg:"employee updated successfully"}),
  err =>
-   res.send({result:'fail', msg:"customer updatation failed"})
+   res.send({result:'fail', msg:"employee updatation failed"})
  );
  
 });
@@ -60,7 +60,7 @@ router.get('/attendance', async (req, res, next) => {
   
 });
 router.get('/attendance/:id', async function (req, res) {
-  await Attendance.findOne({where:{employeeid:req.params.id}}).then((records)=>{
+  await Attendance.findOne({where:{employeeid:req.params.employeeid}}).then((records)=>{
     res.send(records);
    });
 });
@@ -79,7 +79,7 @@ router.delete('/attendance', async function (req, res) {
 });
 
 router.put('/attendance', async function (req, res) {
-  await Attendance.update(req.body,{where :{id:req.body.id}}).then(result =>
+  await Attendance.update(req.body,{where :{employeeid:req.body.employeeid}}).then(result =>
     res.send({result:'success', msg:"Attendance updated successfully"}),
   err =>
     res.send({result:'fail', msg:"Attendance updation failed"})
@@ -98,7 +98,7 @@ router.get('/leaves', async (req, res, next) => {
   
 });
 router.get('/leaves/:id', async function (req, res) {
-  await Leaves.findOne({where:{employeeid:req.params.id}}).then((records)=>{
+  await Leaves.findOne({where:{employeeid:req.params.employeeid}}).then((records)=>{
     res.send(records);
    });
 });
@@ -114,20 +114,21 @@ router.post('/leaves', async function (req, res) {
 
 router.delete('/leaves', async function (req, res) {
   await Leaves.destroy({where:{id:req.body.id}}).then(result=>
-    res.send({result:'success',msg:"employee deleted successfully"}),
+    res.send({result:'success',msg:"leaves deleted successfully"}),
     err =>
-    res.send({result:'fail',msg:"employee deletion failed"}))
+    res.send({result:'fail',msg:"leaves deletion failed"}))
  
 });
 
 router.put('/leaves', async function (req, res) {
   d=new Date();
-  employee.dateofmodify= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString();
+  req.body.dateofmodify= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString();
  
-  await Leaves.update(req.body,{where :{id:req.body.id}}).then(result =>
-    res.send({result:'success', msg:"customer updated successfully"}),
+  await Leaves.update(req.body,{where :{employeeid:req.body.employeeid}}).then(result =>
+    res.send({result:'success', msg:"leaves updated successfully"}),
   err =>
-    res.send({result:'fail', msg:"customer updatation failed"})
+    console.log(err)
+    //res.send({result:'fail', msg:"leaves updatation failed"})
   );
   
 });
@@ -138,27 +139,27 @@ router.put('/leaves', async function (req, res) {
 
 const Salaries = require('../models/salaries')
 
-router.get('/', async (req, res, next) => {
+router.get('/salaries', async (req, res, next) => {
    await Salaries.findAll().then((records)=>{
     res.send(records);
    });
   
 });
-router.get('/:id/:monthyear', async function (req, res) {
-  await Salaries.findOne({where:{employeeid:req.params.id,monthyear:req.params.monthyear}}).then((records)=>{
+router.get('/salaries/:id/:monthyear', async function (req, res) {
+  await Salaries.findOne({where:{employeeid:req.params.employeeid,monthyear:req.params.monthyear}}).then((records)=>{
     res.send(records);
    });
 });
 
-router.post('/', async function (req, res) {
+router.post('/salaries', async function (req, res) {
   d=new Date();
-  employee.dateOfModify= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString()
-  employee.dateOfEntry= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString()
+  req.body.dateOfModify= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString()
+  req.body.dateOfEntry= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString()
   await Salaries.create(req.body);
   res.send({result:"ok", msg:"Salaries added ok"});
 });
 
-router.delete('/', async function (req, res) {
+router.delete('/salaries', async function (req, res) {
   await Salaries.destroy({where:{id:req.body.id}}).then(result=>
     res.send({result:'success',msg:"Salaries deleted successfully"}),
     err =>
@@ -166,10 +167,10 @@ router.delete('/', async function (req, res) {
  
 });
 
-router.put('/', async function (req, res) {
+router.put('/salaries', async function (req, res) {
   d=new Date();
-  employee.dateOfModify= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString()
-  await Salaries.update(req.body,{where :{id:req.body.id}}).then(result =>
+  req.body.dateOfModify= d.toISOString().slice(0,10)+" "+d.toLocaleTimeString()
+  await Salaries.update(req.body,{where :{employeeid:req.body.employeeid}}).then(result =>
     res.send({result:'success', msg:"Salaries updated successfully"}),
   err =>
     res.send({result:'fail', msg:"Salaries updatation failed"})
