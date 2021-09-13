@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 const { Sequelize } = require('sequelize');
-var md5 = require('md5');
+var md5 = require('md5')
 //EMPLOYEE
 
 const Employee = require('../models/employee')
