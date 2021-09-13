@@ -57,7 +57,7 @@ const Employee = sequelize.define('Employee', {
 
 
 }, {
-  tableName: 'employee'
+  tableName: ''
 });
 
 module.exports = Employee;
