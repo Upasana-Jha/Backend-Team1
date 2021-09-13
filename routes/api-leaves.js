@@ -13,7 +13,7 @@ router.get('/', async (req, res, next) => {
   
 });
 router.get('/:id', async function (req, res) {
-  await Leaves.findAll({where:{employeeid:req.params.employeeid}}).then((records)=>{
+  await Leaves.findAll({where:{employeeid:req.params.id}}).then((records)=>{
     res.send(records);
    });
 });
