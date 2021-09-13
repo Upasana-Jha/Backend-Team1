@@ -37,7 +37,8 @@ password = record[0].password;
     res.json({
       success: true,
       message: 'User login successful! Enjoy your token!',
-      token: token
+      token: token,
+      id:employeeid
     });
 
   }else{
