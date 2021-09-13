@@ -11,7 +11,7 @@ router.get('/', async (req, res, next) => {
   
 });
 router.get('/:id', async function (req, res) {
-  await Attendance.findOne({where:{employeeid:req.params.id}}).then((records)=>{
+  await Attendance.findOne({where:{employeeid:req.params.employeeid}}).then((records)=>{
     res.send(records);
    });
 });
