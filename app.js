@@ -20,8 +20,9 @@ var apiAdmin = require('./routes/api-admin')
 
 var cors = require('cors')
 var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
+const { setRole } = require('./service/userDetails');
 
-
+let flag =0;
 //var session = require('cookie-session')
 var app = express();
 
@@ -47,7 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/',usersRouter);
 
-app.use(function(req, res, next) {
+app.use( async function(req, res, next) {
 console.log("security point");
   // check header or url parameters or post parameters for token
   var token = req.body.token || req.param('token') || req.headers['x-access-token'];
@@ -55,13 +56,16 @@ console.log("security point");
   if (token) {
 
     // verifies secret and checks exp
-    jwt.verify(token, app.get('superSecret'), function(err, decoded) {      
+    jwt.verify(token, app.get('superSecret'), async function(err, decoded) {      
       if (err) {
         return res.json({ success: false, message: 'Failed to authenticate token.' });    
       } else {
         // if everything is good, save to request for use in other routes
         req.decoded = decoded; 
-        next();
+        await setRole(req.decoded.emprole);
+        
+          next();
+        
       }
     });
 
